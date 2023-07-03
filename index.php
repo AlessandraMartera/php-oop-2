@@ -6,12 +6,15 @@
     <?php 
      require_once("product.php");
     ?>
+    <link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
 </head>
 <body>
     <div>
         <h4>categoria:</h4>
-        <?php echo $product1 -> category; ?>
+        <div>
+            <?php echo $product1 -> getName(); ?>
+        </div>
     </div>
 
     <div>
