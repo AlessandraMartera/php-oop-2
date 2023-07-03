@@ -13,7 +13,9 @@
     <div>
         <h4>categoria:</h4>
         <div>
-            <?php echo $product1 -> getName(); ?>
+            <?php 
+            echo $product1 -> getCategory() 
+            ?>
         </div>
     </div>
 
