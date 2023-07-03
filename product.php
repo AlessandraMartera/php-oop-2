@@ -73,49 +73,85 @@ class Product{
     }
 
 
-    // class Food extends Product{
-    //     private $monthdeadline;
-    //     private $yeardeadline;
-    //     private $weight;
+    class Food extends Product{
+        private $monthdeadline;
+        private $yeardeadline;
+        private $weight;
 
-    //     public function __construct(
-    //         $immage, $title, $price, $category
-    //         $monthdeadline, $yeardeadline, $weight){
+        public function __construct(
+            $immage, $title, $price, Category $category,
+            $monthdeadline, $yeardeadline, $weight){
 
-    //         parent :: __construct($name, $immage, $title, $price);
+            parent :: __construct($immage, $title, $price, $category);
 
-    //         $this -> setMonthdeadline($monthdeadline);
-    //         $this -> setYeardeadline($yeardeadline);
-    //         $this -> setWeight($weight);
-    //     }
+            $this -> setMonthdeadline($monthdeadline);
+            $this -> setYeardeadline($yeardeadline);
+            $this -> setWeight($weight);
+        }
 
-    //     public function getMonthdeadline(){
-    //         return $this -> monthdeadline;
-    //     }
+        public function getMonthdeadline(){
+            return $this -> monthdeadline;
+        }
 
-    //     public function setMonthdeadline($monthdeadline){
-    //         $this -> monthdeadline = $monthdeadline;
-    //     }
+        public function setMonthdeadline($monthdeadline){
+            $this -> monthdeadline = $monthdeadline;
+        }
 
-    //     public function getYeardeadline(){
-    //         return $this -> yeardeadline;
-    //     }
-    //     public function setYeardeadline($yeardeadline){
-    //         $this -> yeardeadline = $yeardeadline;
-    //     }
+        public function getYeardeadline(){
+            return $this -> yeardeadline;
+        }
+        public function setYeardeadline($yeardeadline){
+            $this -> yeardeadline = $yeardeadline;
+        }
 
-    //     public function getWeight(){
-    //         return $this -> weight;
-    //     }
-    //     public function setWeight($weight){
-    //         $this -> weight = $weight;
-    //     }
+        public function getWeight(){
+            return $this -> weight;
+        }
+        public function setWeight($weight){
+            $this -> weight = $weight;
+        }
         
-    // }
+    }
+
+    class toy extends product{
+        private $color;
+        private $type;
+
+        public function __construct(
+            $immage, $title, $price, Category $category,
+            $color, $type){
+
+            parent :: __construct($immage, $title, $price, $category);
+
+            $this -> setColor($color);
+            $this -> setType($type);
+        }
+
+        public function getcolor(){
+            return $this -> color;
+        }
+
+        public function setcolor($color){
+            $this -> color = $color;
+        }
+
+        public function getType(){
+            return $this -> type;
+        }
+
+        public function setType($type){
+            $this -> type = $type;
+        }
+    }
 
 
 $category1 = new Category ("Dog");
-$product1 = new Product("https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/bc/P00705332.jpg", "croccantini", 10, $category1);
+$category2 = new Category ( "Cat" );
+// $product1 = new Product("https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/bc/P00705332.jpg", "croccantini", 10, $category1);
 
+$product1 = new Food("https://www.carrefour.it/on/demandware.static/-/Sites-carrefour-master-catalog-IT/default/dwdf157044/large/MYDOGLSMINIADULTMANZORISO-7613034146823-1.png", "ONE croccantini", 10, $category1, "06", "2025", "50");
+$product2 = new Toy("https://shop-cdn-m.mediazs.com/bilder/spiky/ball/large/in/tpr/6/800/62906_PLA_TPR_Spiky_Ball_large_12_FG__53_6.jpg", "pallina di gomma", 14, $category1, "verde", "pallina" );
 
+$product3 = new Food("https://www.lasorgente.net/597408-large_default/croccantini-gatto-ultima-sterilizzati-gr400-pollo.jpg", "ultima croccantini", 15, $category2, "10", "2027", "20");
+$product4 = new Toy("https://static.zoomalia.com/prod_img/29813/la_575ffeabd223de0d4eacb9a3e6e53e5448d1437484472.jpg","pesce canvas", 22, $category2, "marroncino", "pesciolino di stoffa" );
 ?>
