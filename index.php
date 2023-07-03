@@ -14,7 +14,7 @@
         <h4>categoria:</h4>
         <div>
             <?php 
-            echo $product1 -> getCategory() 
+            echo $product1 -> getCategory();
             ?>
         </div>
     </div>

@@ -30,16 +30,18 @@ class Product{
         private $title;
         private $price;
         private Category $category;
+
+
         public function __construct($immage, $title, $price, Category $category){
 
             $this -> setImmage($immage);
             $this -> setTitle($title);
             $this -> setPrice($price);
-            $this -> setCategory($category);
+            $this ->  setCategory($category);
         }
       
         public function getCategory(){
-            return $this -> category;
+            return $this -> category -> getName();
         }
 
         public function setCategory($category){
@@ -77,7 +79,7 @@ class Product{
     //     private $weight;
 
     //     public function __construct(
-    //         $name, $immage, $title, $price 
+    //         $immage, $title, $price, $category
     //         $monthdeadline, $yeardeadline, $weight){
 
     //         parent :: __construct($name, $immage, $title, $price);
