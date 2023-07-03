@@ -19,27 +19,28 @@ class Category {
     public function setName($name){
         $this -> name = $name;
     }
-    // public function getDiscount(){
-    //     return $this -> $discount;
-    // }
-
+   
     
  }
 // I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
 // Stampiamo delle card contenenti i dettagli dei prodotti, come immagine, titolo, prezzo, icona della categoria ed il tipo di articolo che si sta visualizzando (prodotto, cibo, gioco, cuccia).
     
-class Product {
+class Product extends Category {
        
         private $immage;
         private $title;
         private $price;
 
-        public function __construct($name, $immage, $title, $price ){
+        public function __construct(
+            $name, 
+            $immage, $title, $price 
+            ){
 
             parent :: __construct($name);
-            $this -> immage = $immage;
-            $this -> title = $title;
-            $this -> price = $price;
+
+            $this -> setImmage($immage);
+            $this -> setTitle($title);
+            $this -> setPrice($price);
         }
       
         
@@ -47,19 +48,29 @@ class Product {
             return $this -> immage;
         }
 
+        public function setImmage($immage){
+            $this -> immage = $immage;
+        }
+
         public function getTitle(){
             return $this -> title;
+        }
+        public function setTitle($title){
+            $this -> title = $title;
         }
 
         public function getPrice(){
             return $this -> price;
         }
+        public function setPrice($price){
+            $this -> price = $price;
+        }
+        
     }
 
 
 
-$category1 = new Category("dog");
-$product1 = new Product("dog","https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/bc/P00705332.jpg", "guinzaglio", 10);
+$product1 = new Product("Dog","https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/bc/P00705332.jpg", "guinzaglio", 10);
 
 
 ?>
