@@ -1,5 +1,25 @@
 <?php 
 
+trait codeProduct {
+
+    private $code;
+
+
+    public function getCode() {
+
+        return $this -> code;
+    }
+    public function setCode($code) {
+
+        // if ($code <= 0) {
+
+        //     throw new Exception("code can't be ZERO char");
+        // }
+
+        $this -> code = $code;
+    }
+}
+
 // Immaginare quali sono le classi necessarie per creare uno shop online con le seguenti caratteristiche:
 
 // L'e-commerce vende prodotti per animali
@@ -18,22 +38,24 @@ class Category {
         $this -> name = $name;
     }
    
-    
- }
+}
 // I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
 // Stampiamo delle card contenenti i dettagli dei prodotti, come immagine, titolo, prezzo, icona della categoria ed il tipo di articolo che si sta visualizzando (prodotto, cibo, gioco, cuccia).
-    
+
 class Product{
        
-       
+        use codeProduct;
+
         private $immage;
         private $title;
         private $price;
         private Category $category;
 
 
-        public function __construct($immage, $title, $price, Category $category){
+        public function __construct($code,
+             $immage, $title, $price, Category $category){
 
+            $this -> setCode($code);
             $this -> setImmage($immage);
             $this -> setTitle($title);
             $this -> setPrice($price);
@@ -79,10 +101,12 @@ class Product{
         private $weight;
 
         public function __construct(
+            $code,
             $immage, $title, $price, Category $category,
             $monthdeadline, $yeardeadline, $weight){
 
-            parent :: __construct($immage, $title, $price, $category);
+            parent :: __construct($code,
+            $immage, $title, $price, $category);
 
             $this -> setMonthdeadline($monthdeadline);
             $this -> setYeardeadline($yeardeadline);
@@ -118,10 +142,12 @@ class Product{
         private $type;
 
         public function __construct(
+            $code,
             $immage, $title, $price, Category $category,
             $color, $type){
 
-            parent :: __construct($immage, $title, $price, $category);
+            parent :: __construct( $code,
+            $immage, $title, $price, $category);
 
             $this -> setColor($color);
             $this -> setType($type);
@@ -147,11 +173,16 @@ class Product{
 
 $category1 = new Category ("Dog");
 $category2 = new Category ( "Cat" );
-// $product1 = new Product("https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/bc/P00705332.jpg", "croccantini", 10, $category1);
 
-$product1 = new Food("https://www.carrefour.it/on/demandware.static/-/Sites-carrefour-master-catalog-IT/default/dwdf157044/large/MYDOGLSMINIADULTMANZORISO-7613034146823-1.png", "ONE croccantini", 10, $category1, "06", "2025", "50");
-$product2 = new Toy("https://shop-cdn-m.mediazs.com/bilder/spiky/ball/large/in/tpr/6/800/62906_PLA_TPR_Spiky_Ball_large_12_FG__53_6.jpg", "pallina di gomma", 14, $category1, "verde", "pallina" );
+$foodProducts = [
+    new Food(578254,"https://www.carrefour.it/on/demandware.static/-/Sites-carrefour-master-catalog-IT/default/dwdf157044/large/MYDOGLSMINIADULTMANZORISO-7613034146823-1.png", "ONE croccantini", 10, $category1, "06", "2025", "50"),
+    new Food(231563,"https://www.lasorgente.net/597408-large_default/croccantini-gatto-ultima-sterilizzati-gr400-pollo.jpg", "ultima croccantini", 15, $category2, "10", "2027", "20")
+  
+];
 
-$product3 = new Food("https://www.lasorgente.net/597408-large_default/croccantini-gatto-ultima-sterilizzati-gr400-pollo.jpg", "ultima croccantini", 15, $category2, "10", "2027", "20");
-$product4 = new Toy("https://static.zoomalia.com/prod_img/29813/la_575ffeabd223de0d4eacb9a3e6e53e5448d1437484472.jpg","pesce canvas", 22, $category2, "marroncino", "pesciolino di stoffa" );
+$toyProducts = [
+    new Toy(536475,"https://shop-cdn-m.mediazs.com/bilder/spiky/ball/large/in/tpr/6/800/62906_PLA_TPR_Spiky_Ball_large_12_FG__53_6.jpg", "pallina di gomma", 14, $category1, "verde", "pallina" ),
+    new Toy(342364,"https://static.zoomalia.com/prod_img/29813/la_575ffeabd223de0d4eacb9a3e6e53e5448d1437484472.jpg","pesce canvas", 22, $category2, "marroncino", "pesciolino di stoffa" )
+];
+
 ?>
