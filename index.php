@@ -99,7 +99,15 @@
                     </div>
                     
                     <span>
-                        <strong>codice prodotto:</strong> <?php echo $toyProduct -> getCode(); ?>
+                        <strong>codice prodotto:</strong> <?php 
+                        try {
+
+                            echo $toyProduct -> getCode(); 
+
+                        } catch (Exception $e) {
+                            echo "Error: " . message($e);
+                        }
+                        ?>
                     </span>
 
                     <div>
