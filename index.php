@@ -99,14 +99,14 @@
                     </div>
                     
                     <span>
-                        <strong>codice prodotto:</strong> <?php 
-                        try {
+                        <strong>codice prodotto:</strong> <?php echo $toyProduct -> getCode(); 
+                        // try {
 
-                            echo $toyProduct -> getCode(); 
+                        //     
 
-                        } catch (Exception $e) {
-                            echo "Error: " . $e -> message();
-                        }
+                        // } catch (Exception $e) {
+                        //     echo "Error: " . message();
+                        // }
                         ?>
                     </span>
 

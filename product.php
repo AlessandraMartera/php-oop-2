@@ -11,9 +11,9 @@ trait codeProduct {
     }
     public function setCode($code) {
 
-        if ($code <= 0) {
+        if (strlen($code) < 6) {
 
-            throw new Exception("code can't be ZERO char");
+            throw new Exception("code can't be 6 char min");
         }
 
         $this -> code = $code;
@@ -175,17 +175,23 @@ $category1 = new Category ("Dog");
 $category2 = new Category ( "Cat" );
 
 $foodProducts = [
-    new Food(578254,"https://www.carrefour.it/on/demandware.static/-/Sites-carrefour-master-catalog-IT/default/dwdf157044/large/MYDOGLSMINIADULTMANZORISO-7613034146823-1.png", "ONE croccantini", 10, $category1, "06", "2025", "50"),
-    new Food(231563,"https://www.lasorgente.net/597408-large_default/croccantini-gatto-ultima-sterilizzati-gr400-pollo.jpg", "ultima croccantini", 15, $category2, "10", "2027", "20")
+    new Food("578254","https://www.carrefour.it/on/demandware.static/-/Sites-carrefour-master-catalog-IT/default/dwdf157044/large/MYDOGLSMINIADULTMANZORISO-7613034146823-1.png", "ONE croccantini", 10, $category1, "06", "2025", "50"),
+    new Food("231563","https://www.lasorgente.net/597408-large_default/croccantini-gatto-ultima-sterilizzati-gr400-pollo.jpg", "ultima croccantini", 15, $category2, "10", "2027", "20")
   
 ];
 
-$toyProducts = [
-    new Toy(0,"https://shop-cdn-m.mediazs.com/bilder/spiky/ball/large/in/tpr/6/800/62906_PLA_TPR_Spiky_Ball_large_12_FG__53_6.jpg", "pallina di gomma", 14, $category1, "verde", "pallina" ),
-    new Toy(342364,"https://static.zoomalia.com/prod_img/29813/la_575ffeabd223de0d4eacb9a3e6e53e5448d1437484472.jpg","pesce canvas", 22, $category2, "marroncino", "pesciolino di stoffa" )
-];
 
 
+try {
+
+    $toyProducts = [
+        new Toy("01","https://shop-cdn-m.mediazs.com/bilder/spiky/ball/large/in/tpr/6/800/62906_PLA_TPR_Spiky_Ball_large_12_FG__53_6.jpg", "pallina di gomma", 14, $category1, "verde", "pallina" ),
+        new Toy("342364","https://static.zoomalia.com/prod_img/29813/la_575ffeabd223de0d4eacb9a3e6e53e5448d1437484472.jpg","pesce canvas", 22, $category2, "marroncino", "pesciolino di stoffa" )
+    ];
+
+} catch (Exception $e) {
+    echo "Error: " .  $e -> getMessage();
+}
 
     
 ?>
