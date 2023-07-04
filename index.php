@@ -105,7 +105,7 @@
                             echo $toyProduct -> getCode(); 
 
                         } catch (Exception $e) {
-                            echo "Error: " . message($e);
+                            echo "Error: " . $e -> message();
                         }
                         ?>
                     </span>
